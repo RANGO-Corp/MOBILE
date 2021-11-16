@@ -1,11 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {
+  StyleSheet, Text, View, StatusBar,
+} from 'react-native';
 
 export default function Profile() {
   return (
-        <View>
-            <Text></Text>
-        </View>
+    <View>
+      <Text>Profile</Text>
+      <StatusBar style="auto" />
+    </View>
   );
 }
 
