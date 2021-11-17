@@ -5,7 +5,7 @@ import {
 
 const { width } = Dimensions.get('window');
 
-export default function CardItem({ onPress }) {
+export default function CardItem({ onPress, navigation }) {
   return (
     <TouchableOpacity style={styles.cardContainer} onPress={onPress}>
       <View style={styles.cardFlag} />

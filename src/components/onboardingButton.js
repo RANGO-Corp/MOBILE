@@ -9,11 +9,16 @@ export default function OnboardingButton({
   return (
     <TouchableOpacity
       onPress={onPress}
-      style={[style,
+      style={!style ? [
         styles.containerStyle,
-        transparency ? { backgroundColor: 'rgba(255,255,255,0)' } : null]}
+        transparency ? { backgroundColor: 'rgba(255,255,255,0)' } : null] : [style, {
+        justifyContent: 'center',
+        borderRadius: 6,
+        paddingVertical: 3,
+
+      }]}
     >
-      <Text style={[fontStyle, styles.textStyle]}>{text}</Text>
+      <Text style={!fontStyle ? [styles.textStyle] : [fontStyle, { textAlign: 'center' }]}>{text}</Text>
     </TouchableOpacity>
   );
 }
@@ -23,9 +28,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'orange',
     borderWidth: 1,
     borderColor: '#FF9900',
+    borderRadius: 6,
     paddingVertical: 3,
     paddingHorizontal: 30,
-    borderRadius: 6,
   },
   textStyle: {
     textAlign: 'center',

@@ -13,8 +13,7 @@ export default function ListItem({ route, navigation, data }) {
     <SafeAreaView>
       {/* <FlatList /> */}
 
-      <CardItem />
-
+      <CardItem navigation onPress={() => navigation.navigate('donateDetails')} />
     </SafeAreaView>
   );
 }

@@ -19,7 +19,7 @@ export default function ListDonates({ navigation, route }) {
     >
       <Logo />
       <SafeAreaView style={styles.listContainer}>
-        <ListItem />
+        <ListItem navigation={navigation} />
 
         <OnboardingButton style={styles.newDonateButton} text="Nova doação" transparency onPress={() => navigation.navigate('donateCreate')} />
       </SafeAreaView>
@@ -41,6 +41,15 @@ const styles = StyleSheet.create({
   },
   newDonateButton: {
     height: 40,
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: '#FF9900',
+    borderRadius: 6,
+    paddingVertical: 3,
+  },
+  actionsCardContainer: {
+    zIndex: 100,
+    alignItems: 'center',
     justifyContent: 'center',
   },
 });
