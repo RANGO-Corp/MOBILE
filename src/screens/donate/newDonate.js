@@ -5,6 +5,7 @@ import {
 import RadioForm from 'react-native-simple-radio-button';
 import DatePicker from 'react-native-date-picker';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import Toast from 'react-native-tiny-toast';
 import BackgroundGradient from '../../components/backgroundGradient';
 import Logo from '../../components/logo';
 import OnboardingInput from '../../components/onboardingInput';
