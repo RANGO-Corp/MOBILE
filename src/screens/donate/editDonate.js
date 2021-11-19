@@ -9,13 +9,14 @@ import Logo from '../../components/logo';
 import OnboardingInput from '../../components/onboardingInput';
 import OnboardingButton from '../../components/onboardingButton';
 import validateFields, { generateErrorString } from '../../utils/validation';
-import { registerDonate } from '../../services/asyncStorage';
+import { editDonate } from '../../services/asyncStorage';
 
-export default function NewDonate({ navigation, route }) {
+export default function EditDonate({ navigation, route }) {
   const radioProperties = [
     { label: 'Perecível', value: 0 },
     { label: 'Não perecível', value: 1 },
   ];
+  const { item } = route.params;
   const [perishability, setPerishability] = useState('');
   const [tittle, setTittle] = useState('');
   const [description, setDescription] = useState('');
@@ -31,7 +32,7 @@ export default function NewDonate({ navigation, route }) {
     setManufacturingDate('');
   }
 
-  async function register() {
+  async function edit() {
     const fields = [
       {
         value: tittle,
@@ -80,12 +81,13 @@ export default function NewDonate({ navigation, route }) {
         manufacturingDate,
         perishability,
         units,
-        creationDate: new Date().toISOString().slice(0, 10),
+        id: item.id,
+        creationDate: item.creationDate,
       };
 
-      await registerDonate(donate);
+      await editDonate(donate);
 
-      Toast.showSuccess('Doação registrada com sucesso!');
+      Toast.showSuccess('Doação editada com sucesso!');
       clearFields();
       navigation.navigate('donateList');
     } else {
@@ -114,12 +116,14 @@ export default function NewDonate({ navigation, route }) {
             tittle="Título"
             value={tittle}
             onChangeText={setTittle}
+            placeholder={item.tittle}
           />
           <OnboardingInput
             tittle="Descrição"
             containerStyle={{ marginVertical: 5 }}
             value={description}
             onChangeText={setDescription}
+            placeholder={item.description}
           />
         </View>
         <View style={{ marginVertical: 5 }}>
@@ -140,12 +144,13 @@ export default function NewDonate({ navigation, route }) {
             tittle="Quantidade"
             value={units}
             onChangeText={setUnits}
+            placeholder={item.units}
           />
         </View>
         <View style={{ marginVertical: 5 }}>
           <OnboardingInput
             tittle="Data de Fabricação"
-            placeholder="dd/mm/aaaa"
+            placeholder={item.manufacturingDate}
             value={manufacturingDate}
             onChangeText={setManufacturingDate}
           />
@@ -153,7 +158,7 @@ export default function NewDonate({ navigation, route }) {
         <View style={{ marginVertical: 5 }}>
           <OnboardingInput
             tittle="Data de Validade"
-            placeholder="dd/mm/aaaa"
+            placeholder={item.expirationDate}
             onChangeText={setExpirationDate}
             value={expirationDate}
           />
@@ -162,7 +167,7 @@ export default function NewDonate({ navigation, route }) {
           <OnboardingButton
             text="Cadastrar"
             transparency
-            onPress={() => register()}
+            onPress={() => edit()}
           />
         </View>
       </View>

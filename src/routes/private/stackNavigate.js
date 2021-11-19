@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import ListDonates from '../../screens/donate/listDonates';
 import NewDonate from '../../screens/donate/newDonate';
 import Donate from '../../screens/donate/donate';
+import EditDonate from '../../screens/donate/editDonate';
 
 const Stack = createStackNavigator();
 
@@ -12,6 +13,7 @@ export function DonateStack() {
     <Stack.Navigator>
       <Stack.Screen name="donateList" component={ListDonates} options={{ headerShown: false }} />
       <Stack.Screen name="donateDetails" component={Donate} options={{ headerShown: false }} />
+      <Stack.Screen name="donateEdit" component={EditDonate} options={{ headerShown: false }} />
       <Stack.Screen name="donateCreate" component={NewDonate} options={{ headerShown: false }} />
     </Stack.Navigator>
   );

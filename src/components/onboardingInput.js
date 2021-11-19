@@ -4,14 +4,14 @@ import {
 } from 'react-native';
 
 export default function OnboardingInput({
-  title, value, background, borderRadius, onChangeText, containerStyle, style,
+  tittle, value, background, borderRadius, onChangeText, containerStyle, style,
   secureTextEntry, dataDetectorTypes, keyboardType, maxLength, placeholder,
 
 }) {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={[styles.container, containerStyle]}>
-        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.tittle}>{tittle}</Text>
         <TextInput
           value={value}
           onChangeText={onChangeText}
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
   },
-  title: {
+  tittle: {
     textAlign: 'left',
     color: '#F99900',
   },

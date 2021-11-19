@@ -3,8 +3,15 @@ import { StyleSheet, Text, View } from 'react-native';
 import BackgroundGradient from '../../components/backgroundGradient';
 import Logo from '../../components/logo';
 import OnboardingButton from '../../components/onboardingButton';
+import { deleteDonate } from '../../services/asyncStorage';
 
-export default function Donate() {
+export default function Donate({ route, navigation }) {
+  const { item } = route.params;
+
+  async function deleteItem() {
+    await deleteDonate(item.id);
+    navigation.navigate('donateList');
+  }
   return (
     <BackgroundGradient
       colors={['#f7e2cd', '#F1E6DB', '#f0c8a1']}
@@ -18,9 +25,14 @@ export default function Donate() {
         <Logo style={styles.logoStyle} />
       </View>
       <View style={styles.content}>
-        <Text style={styles.title}>Donate</Text>
-        <OnboardingButton text="Editar" style={styles.editButton} fontStyle={styles.text} />
-        <OnboardingButton text="Excluir" style={styles.deleteButton} fontStyle={styles.text} />
+        <Text style={styles.tittle}>Donate</Text>
+        <OnboardingButton text="Editar" style={styles.editButton} fontStyle={styles.text} onPress={() => navigation.navigate('donateEdit', { item })} />
+        <OnboardingButton
+          text="Excluir"
+          style={styles.deleteButton}
+          fontStyle={styles.text}
+          onPress={() => deleteItem()}
+        />
       </View>
     </BackgroundGradient>
   );
@@ -30,7 +42,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  title: {
+  tittle: {
     textAlign: 'center',
     color: '#ff9900',
     fontSize: 36,

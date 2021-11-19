@@ -31,13 +31,13 @@ export default function Login({ route, navigation }) {
           onChangeText={setEmail}
           background="white"
           value={email}
-          title="E-mail"
+          tittle="E-mail"
         />
         <OnboardingInput
           onChangeText={setPassword}
           background="white"
           value={password}
-          title="Senha"
+          tittle="Senha"
           secureTextEntry
           containerStyle={styles.fields}
         />

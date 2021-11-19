@@ -1,14 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
-  SafeAreaView, StyleSheet, Text, View,
+  SafeAreaView, StyleSheet, View,
   StatusBar,
 } from 'react-native';
 import BackgroundGradient from '../../components/backgroundGradient';
 import ListItem from '../../components/listItem';
 import Logo from '../../components/logo';
 import OnboardingButton from '../../components/onboardingButton';
+import { getDonates } from '../../services/asyncStorage';
 
 export default function ListDonates({ navigation, route }) {
+  const [donates, setDonates] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        setDonates(await getDonates());
+      } catch (e) {
+        console.info(e);
+      }
+    })();
+  });
+
   return (
     <BackgroundGradient
       colors={['#f7e2cd', '#F1E6DB', '#f0c8a1']}
@@ -19,9 +32,19 @@ export default function ListDonates({ navigation, route }) {
     >
       <Logo />
       <SafeAreaView style={styles.listContainer}>
-        <ListItem navigation={navigation} />
+        <View style={styles.listContainer}>
+          {
+        donates
+          ? (<ListItem data={donates} route={route} navigation={navigation} />) : (<> </>)
 
-        <OnboardingButton style={styles.newDonateButton} text="Nova doação" transparency onPress={() => navigation.navigate('donateCreate')} />
+        }
+        </View>
+        <OnboardingButton
+          style={styles.newDonateButton}
+          text="Nova doação"
+          transparency
+          onPress={() => navigation.navigate('donateCreate')}
+        />
       </SafeAreaView>
       <StatusBar style="auto" />
     </BackgroundGradient>

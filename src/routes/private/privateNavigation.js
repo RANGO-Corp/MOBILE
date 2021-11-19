@@ -17,7 +17,7 @@ export default function PrivateNavigation() {
       },
       headerShown: false,
       headerTintColor: 'black',
-      headerTitleContainerStyle: {
+      headerTittleContainerStyle: {
         color: 'black',
         textAlign: 'left',
         alignItems: 'flex-start',
@@ -31,7 +31,7 @@ export default function PrivateNavigation() {
         component={DonateStack}
         options={
           {
-            title: 'Doações',
+            tittle: 'Doações',
             tabBarIcon: ({ size, focused }) => (
               <MaterialCommunityIcons
                 name="heart-multiple-outline"
@@ -47,7 +47,7 @@ export default function PrivateNavigation() {
         component={Profile}
         options={
         {
-          title: 'Perfil',
+          tittle: 'Perfil',
           tabBarIcon: ({ size, focused }) => (
             <MaterialCommunityIcons
               name="account-outline"

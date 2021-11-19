@@ -25,39 +25,39 @@ export default function Register({ route, navigation }) {
       <View style={styles.fieldsContainer}>
         <OnboardingInput
           containercontainerStyle={styles.buttonStyle}
-          title="Nome"
+          tittle="Nome"
         />
         <OnboardingInput
           containerStyle={styles.buttonStyle}
-          title="E-mail"
+          tittle="E-mail"
           keyboardType="email-address"
         />
         <OnboardingInput
           containerStyle={styles.buttonStyle}
-          title="Telefone"
+          tittle="Telefone"
           dataDetectorTypes="phoneNumber"
           keyboardType="phone-pad"
           placeholder="(xx) xxxxx-xxxx"
         />
         <OnboardingInput
           containerStyle={styles.buttonStyle}
-          title="Senha"
+          tittle="Senha"
           secureTextEntry
         />
         <OnboardingInput
           containerStyle={styles.buttonStyle}
-          title="Confirme sua senha"
+          tittle="Confirme sua senha"
           secureTextEntry
         />
         <View style={styles.inlineFields}>
           <OnboardingInput
-            title="Endereço"
+            tittle="Endereço"
             containerStyle={{ width: (width * 0.5) }}
             dataDetectorTypes="address"
           />
           <OnboardingInput
             containerStyle={{ width: (width * 0.2), marginVertical: 5 }}
-            title="Número"
+            tittle="Número"
             keyboardType="number-pad"
             maxLength={5}
           />
@@ -65,7 +65,7 @@ export default function Register({ route, navigation }) {
         <View style={styles.inlineFields}>
 
           <OnboardingInput
-            title="Cidade"
+            tittle="Cidade"
             containerStyle={{ width: (width * 0.5) }}
           />
           <View>
@@ -94,13 +94,13 @@ export default function Register({ route, navigation }) {
               textAlign: 'center',
             }
           }
-              title="Estado"
+              tittle="Estado"
               options={statesInitials}
             />
           </View>
         </View>
         <OnboardingInput
-          title="CEP"
+          tittle="CEP"
           keyboardType="number-pad"
         />
         <View style={styles.inlineFieldsEvenly}>

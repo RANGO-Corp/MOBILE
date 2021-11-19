@@ -1,21 +1,31 @@
 import React from 'react';
 import {
-  StyleSheet, Text, SafeAreaView, FlatList,
+  SafeAreaView, FlatList,
 } from 'react-native';
 import CardItem from './cardItem';
 
-export default function ListItem({ route, navigation, data }) {
-  const itemList = ({ item, index }) => (
-    <CardItem />
+export default function ListItem({
+  navigation, data, style, route,
+}) {
+  const itemList = ({ item }) => (
+    <CardItem
+      description={item.description}
+      units={item.units}
+      tittle={item.tittle}
+      creationDate={item.creationDate}
+      onPress={() => navigation.navigate('donateDetails', { item })}
+    />
   );
 
   return (
     <SafeAreaView>
-      {/* <FlatList /> */}
+      <FlatList
+        data={data}
+        renderItem={itemList}
+        keyExtractor={(item) => item.id.toString()}
+        style={style}
+      />
 
-      <CardItem navigation onPress={() => navigation.navigate('donateDetails')} />
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({});

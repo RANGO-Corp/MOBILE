@@ -1,27 +1,35 @@
 import React from 'react';
 import {
-  StyleSheet, Text, View, Dimensions, SafeAreaView, TouchableOpacity,
+  StyleSheet, Text, View, TouchableOpacity,
 } from 'react-native';
 
-const { width } = Dimensions.get('window');
+export default function CardItem({
+  onPress,
+  description,
+  tittle,
+  creationDate,
+  units,
 
-export default function CardItem({ onPress, navigation }) {
+}) {
   return (
     <TouchableOpacity style={styles.cardContainer} onPress={onPress}>
-      <View style={styles.cardFlag} />
+      <View style={[styles.cardFlag, units <= 0 || !units ? {
+        backgroundColor: '#eb2153',
+      } : { backgroundColor: '#24C809' }]}
+      />
 
       <View style={styles.middleSection}>
-        <Text>Maçã</Text>
+        <Text>{tittle}</Text>
         <Text style={styles.descriptionText}>
-          O que temos que ter sempre em mente é que o consenso sobre a necessidade de
-          qualificação ainda não demonstrou convincentemente que vai participar na
-          mudança das condições financeiras e administrativas exigidas.
+          {`Descrição: ${description}`}
         </Text>
-        <Text style={styles.registerText}>Cadastrado em: 09/09/2020</Text>
+        <Text style={styles.registerText}>
+          {`Cadastrado em: ${creationDate}`}
+        </Text>
       </View>
 
       <View style={styles.rightSection}>
-        <Text style={styles.countStyle}>9</Text>
+        <Text style={styles.countStyle}>{units}</Text>
         <Text style={styles.unityStyle}>un.</Text>
       </View>
     </TouchableOpacity>
@@ -35,11 +43,12 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     flexDirection: 'row',
     flexWrap: 'wrap',
+    marginVertical: 3,
   },
   cardFlag: {
     borderTopLeftRadius: 10,
     borderBottomLeftRadius: 10,
-    backgroundColor: '#24C809',
+
     height: 80,
     width: 15,
   },
